@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="student"
+            type="com.example.studentmanagement.model.Student" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:importantForAccessibility="no"
+            android:id="@+id/avatar"
+            android:layout_width="@dimen/avatar_dimen"
+            android:layout_height="@dimen/list_item_height"
+            android:padding="5dp"
+            android:scaleType="fitCenter"
+            app:imageUrl="@{student.avatar}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@drawable/ic_baseline_person_24" />
+
+        <TextView
+            android:id="@+id/name_student"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_between_elements"
+            android:text="@{student.fullName + ' ' + student.nickName}"
+            android:textSize="@dimen/font_size"
+            app:layout_constraintStart_toEndOf="@id/avatar"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Truong Ngoc Tue Minh - Sun" />
+
+        <TextView
+            android:id="@+id/gender_student"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_between_elements"
+            android:text="@{student.gender}"
+            android:textSize="@dimen/font_size"
+            app:layout_constraintStart_toStartOf="@id/name_student"
+            app:layout_constraintTop_toBottomOf="@id/name_student"
+            tools:text="Gioi tinh: Nam" />
+
+        <TextView
+            android:id="@+id/class_student"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_between_elements"
+            android:text="@{student.classStudent}"
+            android:textSize="@dimen/font_size"
+            app:layout_constraintStart_toStartOf="@id/name_student"
+            app:layout_constraintTop_toBottomOf="@id/gender_student"
+            tools:text="Lop: Hoa Mai" />
+
+        <TextView
+            android:id="@+id/age_student"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/margin_between_elements"
+            android:text="@{@string/age(student.age)}"
+            android:textSize="@dimen/font_size"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/class_student"
+            tools:text="4 tuoi" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

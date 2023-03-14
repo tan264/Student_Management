@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewmodel"
+            type="com.example.studentmanagement.viewmodel.DetailStudentViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".DetailStudentFragment">
+
+        <TextView
+            android:id="@+id/title_detail_student"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_between_elements"
+            android:text="@string/profile_student"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/text_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_between_elements"
+            android:layout_marginTop="50dp"
+            android:layout_marginEnd="@dimen/margin_between_elements"
+            android:text="@{@string/full_name(viewmodel.student.fullName)}"
+            android:textSize="@dimen/font_size"
+            app:layout_constraintEnd_toStartOf="@id/img_avatar"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/title_detail_student"
+            tools:text="Họ và tên: Trương Ngọc Tuệ Minh" />
+
+        <ImageView
+            android:id="@+id/img_avatar"
+            imageUrl="@{viewmodel.student.avatar}"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_marginEnd="@dimen/margin_between_elements"
+            android:importantForAccessibility="no"
+            android:padding="5dp"
+            android:scaleType="fitCenter"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/text_name"
+            tools:src="@drawable/ic_baseline_person_24" />
+
+        <TextView
+            android:id="@+id/text_nickname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_between_elements"
+            android:text="@{@string/nick_name(viewmodel.student.nickName)}"
+            android:textSize="@dimen/font_size"
+            app:layout_constraintStart_toStartOf="@id/text_name"
+            app:layout_constraintTop_toBottomOf="@id/text_name"
+            tools:text="Tên ở nhà: Sun" />
+
+        <TextView
+            android:id="@+id/text_birthday"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_between_elements"
+            android:text="@{@string/birthday(viewmodel.student.birthday)}"
+            android:textSize="@dimen/font_size"
+            app:layout_constraintStart_toStartOf="@id/text_nickname"
+            app:layout_constraintTop_toBottomOf="@id/text_nickname"
+            tools:text="Sinh nhật: 15/09/2017" />
+
+        <TextView
+            android:id="@+id/text_age"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_between_elements"
+            android:text="@{@string/age(viewmodel.student.age)}"
+            android:textSize="@dimen/font_size"
+            app:layout_constraintStart_toStartOf="@id/text_nickname"
+            app:layout_constraintTop_toBottomOf="@id/text_birthday"
+            tools:text="Tuổi: 4" />
+
+        <TextView
+            android:id="@+id/text_class"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{@string/class_name(viewmodel.student.classStudent)}"
+            android:textSize="@dimen/font_size"
+            app:layout_constraintEnd_toEndOf="@id/text_name"
+            app:layout_constraintTop_toTopOf="@id/text_age"
+            tools:text="Lớp: Hoa Mai" />
+
+        <TextView
+            android:id="@+id/text_gender"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_between_elements"
+            android:text="@{@string/gender(viewmodel.student.gender)}"
+            android:textSize="@dimen/font_size"
+            app:layout_constraintStart_toStartOf="@id/text_age"
+            app:layout_constraintTop_toBottomOf="@id/text_age"
+            tools:text="Giới tính: Nữ" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_between_elements"
+            android:text="@{@string/address(viewmodel.student.address)}"
+            android:textSize="@dimen/font_size"
+            app:layout_constraintEnd_toEndOf="@id/img_avatar"
+            app:layout_constraintStart_toStartOf="@id/text_gender"
+            app:layout_constraintTop_toBottomOf="@id/text_gender"
+            tools:text="Địa chỉ: Số 88 ngõ 5 đường Hoàng Quốc Việt Cầu Giấy Hà Nội" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

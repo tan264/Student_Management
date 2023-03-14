@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="list_item_height">100dp</dimen>
+    <dimen name="avatar_dimen">100dp</dimen>
+    <dimen name="margin_between_elements">12dp</dimen>
+    <dimen name="font_size">18sp</dimen>
+</resources>

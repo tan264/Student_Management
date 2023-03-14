@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph.xml"
+    app:startDestination="@id/listStudentFragment">
+
+    <fragment
+        android:id="@+id/listStudentFragment"
+        android:name="com.example.studentmanagement.ListStudentFragment"
+        android:label="@string/list_student_fragment"
+        tools:layout="@layout/fragment_list_student">
+        <action
+            android:id="@+id/action_listStudentFragment_to_addStudentFragment"
+            app:destination="@id/addStudentFragment" />
+        <action
+            android:id="@+id/action_listStudentFragment_to_detailStudentFragment"
+            app:destination="@id/detailStudentFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addStudentFragment"
+        android:name="com.example.studentmanagement.AddStudentFragment"
+        android:label="@string/add_student_fragment"
+        tools:layout="@layout/fragment_add_student">
+        <action
+            android:id="@+id/action_addStudentFragment_to_listStudentFragment"
+            app:destination="@id/listStudentFragment"
+            app:popUpTo="@id/listStudentFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailStudentFragment"
+        android:name="com.example.studentmanagement.DetailStudentFragment"
+        android:label="Detail Student"
+        tools:layout="@layout/fragment_detail_student">
+        <action
+            android:id="@+id/action_detailStudentFragment_to_listStudentFragment"
+            app:destination="@id/listStudentFragment" />
+        <argument
+            android:name="student"
+            app:argType="com.example.studentmanagement.model.Student"
+            app:nullable="true"
+            android:defaultValue="@null" />
+    </fragment>
+</navigation>

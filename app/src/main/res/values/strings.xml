@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">Student Management</string>
+    <string name="success">Success</string>
+    <string name="fail">Fail</string>
+    <string name="list_student_fragment">List students</string>
+    <string name="add_student_fragment">Add Student</string>
+    <string name="enter_name">Enter the child\'s name</string>
+    <string name="birthday_text">Birthday</string>
+    <string name="age">Age: %1$1d</string>
+    <string name="date">%1$02d/%2$02d/%3$d</string>
+    <string name="are_you_sure_to_choose_this_image">Are you sure to choose this image?</string>
+    <string name="message_upload_image">This image will be uploaded</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+    <string name="enter_nickname">Enter the child\'s nickname</string>
+    <string name="confirm">Confirm</string>
+    <string name="enter_enough_information">Enter enough information, please</string>
+    <string name="insert_data_ok">Insert data is complete</string>
+    <string name="insert_data_fail">error occurs</string>
+    <string name="cancel">Cancel</string>
+    <string name="profile_student">Student Profile</string>
+    <string name="full_name">Full name: %1$s</string>
+    <string name="nick_name">Nick name: %1$s</string>
+    <string name="birthday">Birthday: %1$s</string>
+    <string name="class_name">Class: %1$s</string>
+    <string name="gender">Gender: %1$s</string>
+    <string name="address">Address: %1$s</string>
+</resources>
