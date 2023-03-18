@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="student"
             type="com.example.studentmanagement.model.Student" />
@@ -14,10 +15,10 @@
         android:layout_height="wrap_content">
 
         <ImageView
-            android:importantForAccessibility="no"
             android:id="@+id/avatar"
             android:layout_width="@dimen/avatar_dimen"
             android:layout_height="@dimen/list_item_height"
+            android:importantForAccessibility="no"
             android:padding="5dp"
             android:scaleType="fitCenter"
             app:imageUrl="@{student.avatar}"
@@ -68,6 +69,18 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/class_student"
             tools:text="4 tuoi" />
+
+        <TextView
+            android:id="@+id/textViewOption"
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="&#8942;"
+            android:textAppearance="?android:textAppearanceLarge"
+            android:textSize="26sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="HardcodedText" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
