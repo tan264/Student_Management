@@ -2,6 +2,14 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
+
+    <item
+        android:id="@+id/item_refresh"
+        android:icon="@drawable/baseline_refresh_24"
+        android:title="Refresh"
+        app:showAsAction="always"
+        tools:ignore="HardcodedText" />
+
     <item
         android:id="@+id/item_search"
         android:icon="@drawable/ic_baseline_search_24"
@@ -15,4 +23,5 @@
         android:title="Add"
         app:showAsAction="always"
         tools:ignore="HardcodedText" />
+
 </menu>

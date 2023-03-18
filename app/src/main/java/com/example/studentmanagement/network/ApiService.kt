@@ -1,6 +1,5 @@
 package com.example.studentmanagement.network
 
-import com.example.studentmanagement.model.Parent
 import com.example.studentmanagement.model.Student
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
@@ -53,8 +52,9 @@ interface ApiService {
     @GET("getListStudents.php")
     suspend fun getListStudents(): List<Student>
 
-    @GET("getListParents.php")
-    suspend fun getListParents(): List<Parent>
+    @FormUrlEncoded
+    @POST("deleteStudent.php")
+    fun deleteStudent(@Field("id_student") idStudent: Int): Call<String>
 }
 
 object Api {

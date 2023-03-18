@@ -25,11 +25,11 @@
             tools:listitem="@layout/row_student_item" />
 
         <ImageView
-            android:importantForAccessibility="no"
             android:id="@+id/status"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_centerInParent="true"
+            android:importantForAccessibility="no"
             app:status="@{viewModel.status}" />
 
     </RelativeLayout>
