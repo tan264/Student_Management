@@ -41,16 +41,32 @@ interface ApiService {
     @FormUrlEncoded
     @POST("insert.php")
     fun insertData(
-        @Field("id_class") id_class: Int,
-        @Field("full_name") full_name: String,
-        @Field("nick_name") nickname: String,
+        @Field("id_class") idClass: Int,
+        @Field("full_name") fullName: String,
+        @Field("nick_name") nickName: String,
         @Field("birthday") birthday: String,
         @Field("gender") gender: String,
         @Field("avatar") avatar: String
     ): Call<String>
 
+    @FormUrlEncoded
+    @POST("edit.php")
+    fun editData(
+        @Field("id_student") idStudent: Int,
+        @Field("id_class") idClass: Int,
+        @Field("full_name") fullName: String,
+        @Field("nick_name") nickName: String,
+        @Field("birthday") birthday: String,
+        @Field("gender") gender: String,
+        @Field("avatar") avatar: String,
+        @Field("address") address: String
+    ): Call<String>
+
     @GET("getListStudents.php")
     suspend fun getListStudents(): List<Student>
+
+    @GET("getStudent.php")
+    suspend fun getStudent(): Student
 
     @FormUrlEncoded
     @POST("deleteStudent.php")

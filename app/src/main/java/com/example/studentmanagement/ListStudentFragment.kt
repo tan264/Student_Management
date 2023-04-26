@@ -74,12 +74,12 @@ class ListStudentFragment : Fragment() {
             }
         }, viewLifecycleOwner, Lifecycle.State.RESUMED)
 
-        viewModel.isDeleteSuccess.observe(viewLifecycleOwner){isDeleted ->
-            if(isDeleted == 1) {
+        viewModel.isDeleteSuccess.observe(viewLifecycleOwner) { isDeleted ->
+            if (isDeleted == 1) {
                 Log.d("DEBUG", "deleted")
                 Toast.makeText(requireContext(), "Deleted", Toast.LENGTH_SHORT).show()
                 viewModel.getListStudents()
-            } else if(isDeleted == -1) {
+            } else if (isDeleted == -1) {
                 Log.d("DEBUG", "fail")
                 Toast.makeText(requireContext(), "Failed to delete", Toast.LENGTH_SHORT).show()
             }
@@ -97,10 +97,19 @@ class ListStudentFragment : Fragment() {
     private fun onOptionClick(student: Student, view: View) {
         val popupMenu = PopupMenu(requireContext(), view)
         popupMenu.inflate(R.menu.layout_context_menu)
-        popupMenu.setOnMenuItemClickListener { it ->
+        popupMenu.setOnMenuItemClickListener {
             when (it.itemId) {
                 R.id.menu_delete -> {
                     viewModel.deleteStudent(student.id)
+                    true
+                }
+
+                R.id.menu_edit -> {
+                    findNavController().navigate(
+                        ListStudentFragmentDirections.actionListStudentFragmentToEditStudentFragment(
+                            student
+                        )
+                    )
                     true
                 }
                 else -> {
@@ -110,6 +119,12 @@ class ListStudentFragment : Fragment() {
             }
         }
         popupMenu.show()
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        viewModel.getListStudents()
     }
 
     override fun onDestroyView() {

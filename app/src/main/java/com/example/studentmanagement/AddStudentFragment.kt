@@ -110,35 +110,3 @@ class AddStudentFragment : Fragment() {
         _binding = null
     }
 }
-
-class DatePickerFragment(private val viewModel: AddStudentViewModel) : DialogFragment(),
-    DatePickerDialog.OnDateSetListener {
-
-    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-        // Create a new instance of DatePickerDialog and return it
-        viewModel.birthday.value?.apply {
-            val s = this.split("/")
-            return DatePickerDialog(
-                requireContext(),
-                this@DatePickerFragment,
-                s[2].toInt(),
-                s[1].toInt() - 1,
-                s[0].toInt()
-            )
-        }
-        return DatePickerDialog(
-            requireContext(),
-            this,
-            Calendar.getInstance().get(Calendar.YEAR) - 2,
-            3,
-            26
-        )
-
-    }
-
-    override fun onDateSet(view: DatePicker, year: Int, month: Int, day: Int) {
-        // Do something with the date chosen by the user
-        viewModel.setBirthday(year, month, day)
-        viewModel.setAge(year, month, day)
-    }
-}

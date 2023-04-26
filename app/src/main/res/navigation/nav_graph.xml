@@ -16,6 +16,10 @@
         <action
             android:id="@+id/action_listStudentFragment_to_detailStudentFragment"
             app:destination="@id/detailStudentFragment" />
+        <action
+            android:id="@+id/action_listStudentFragment_to_editStudentFragment"
+            app:destination="@id/editStudentFragment"
+            app:popUpToInclusive="false" />
     </fragment>
     <fragment
         android:id="@+id/addStudentFragment"
@@ -35,11 +39,28 @@
         tools:layout="@layout/fragment_detail_student">
         <action
             android:id="@+id/action_detailStudentFragment_to_listStudentFragment"
-            app:destination="@id/listStudentFragment" />
+            app:destination="@id/listStudentFragment"
+            app:popUpToInclusive="false" />
         <argument
             android:name="student"
             app:argType="com.example.studentmanagement.model.Student"
             app:nullable="true"
             android:defaultValue="@null" />
+        <action
+            android:id="@+id/action_detailStudentFragment_to_editStudentFragment"
+            app:destination="@id/editStudentFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/editStudentFragment"
+        android:name="com.example.studentmanagement.EditStudentFragment"
+        android:label="@string/edit_student_fragment">
+        <action
+            android:id="@+id/action_editStudentFragment_to_detailStudentFragment"
+            app:destination="@id/detailStudentFragment"
+            app:popUpTo="@id/editStudentFragment"
+            app:popUpToInclusive="true" />
+        <argument
+            android:name="student"
+            app:argType="com.example.studentmanagement.model.Student" />
     </fragment>
 </navigation>

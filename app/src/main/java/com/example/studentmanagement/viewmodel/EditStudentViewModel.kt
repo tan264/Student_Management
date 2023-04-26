@@ -7,24 +7,20 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.studentmanagement.R
+import com.example.studentmanagement.model.Student
 import com.example.studentmanagement.network.Api
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.util.*
+import java.util.Calendar
 
+class EditStudentViewModel : ViewModel() {
+    lateinit var student: Student
 
-open class AddStudentViewModel : ViewModel() {
-
-    companion object {
-        const val DEFAULT_BOY_AVATAR = "default_boy.png"
-        const val DEFAULT_GIRL_AVATAR = "default_girl.png"
-    }
-
-    private val _statusInsert = MutableLiveData<Boolean?>()
-    val statusInsert: LiveData<Boolean?> = _statusInsert
+    private var _statusEdit = MutableLiveData<Boolean?>()
+    val statusEdit: LiveData<Boolean?> = _statusEdit
 
     private val _birthday = MutableLiveData<String>()
     val birthday: LiveData<String> = _birthday
@@ -42,12 +38,34 @@ open class AddStudentViewModel : ViewModel() {
 
     val nickName = MutableLiveData<String>()
 
-    private var avatar: String? = null
-    private var gender: String
+    val address = MutableLiveData<String>()
 
-    init {
+    private var avatar: String? = null
+    private var gender = "male"
+
+    fun getAvatar(): String {
+        avatar?.let { return it }
+        return student.avatar
+    }
+
+    fun getGender(): String = gender
+
+    fun config() {
+        _birthday.value = student.birthday
+        fullName.value = student.fullName
+        nickName.value = student.nickName
+        _age.value = student.age
+        student.address?.let {
+            address.value = it
+        }
+
         _checked.postValue(R.id.gender_male)
-        gender = "Male"
+        gender = student.gender
+        if (gender == "male") {
+            _checked.postValue(R.id.gender_male)
+        } else {
+            _checked.postValue(R.id.gender_female)
+        }
     }
 
     fun setGender(radioGroup: RadioGroup, id: Int) {
@@ -56,6 +74,10 @@ open class AddStudentViewModel : ViewModel() {
             R.id.gender_male -> gender = "Male"
             R.id.gender_female -> gender = "Female"
         }
+    }
+
+    fun setBirthday(year: Int, month: Int, day: Int) {
+        _birthday.value = String.Companion.format("%1\$02d/%2\$02d/%3$4d", day, month + 1, year)
     }
 
     fun setAge(year: Int, month: Int, day: Int) {
@@ -68,10 +90,6 @@ open class AddStudentViewModel : ViewModel() {
         }
     }
 
-    fun setBirthday(year: Int, month: Int, day: Int) {
-        _birthday.value = String.Companion.format("%1\$02d/%2\$02d/%3$4d", day, month + 1, year)
-    }
-
     fun setImage(uri: Uri) {
         _uri.value = uri
     }
@@ -82,7 +100,11 @@ open class AddStudentViewModel : ViewModel() {
 //        val token = filePath.split(".")
 //        filePath = token[0] + System.currentTimeMillis() + "." + token[1]
         val body =
-            MultipartBody.Part.createFormData("uploaded_file", System.currentTimeMillis().toString() + "." + type, requestBody)
+            MultipartBody.Part.createFormData(
+                "uploaded_file",
+                System.currentTimeMillis().toString() + "." + type,
+                requestBody
+            )
         val callback = Api.retrofitService.uploadImage(body)
         callback.enqueue(object : Callback<String> {
             override fun onResponse(call: Call<String>, response: Response<String>) {
@@ -98,14 +120,13 @@ open class AddStudentViewModel : ViewModel() {
         })
     }
 
-    fun insertData() {
+    fun updateData() {
 
         if (avatar == null) {
-            avatar = if (gender == "Male") {
-                DEFAULT_BOY_AVATAR
-            } else {
-                DEFAULT_GIRL_AVATAR
-            }
+            avatar = student.avatar
+        }
+        if (address.value == null) {
+            address.value = ""
         }
         if (nickName.value == null) {
             val token = fullName.value!!.split(" ")
@@ -120,26 +141,27 @@ open class AddStudentViewModel : ViewModel() {
             3
         }
 
-        var date = ""
-        birthday.value?.let {
-            val tokens = it.split("/")
-            date = tokens[2] + "-" + tokens[1] + "-" + tokens[0]
-        }
-
-        val callback = Api.retrofitService.insertData(
-            idClass, fullName.value!!, nickName.value!!, date, gender, avatar!!
+        val callback = Api.retrofitService.editData(
+            student.id,
+            idClass,
+            fullName.value!!,
+            nickName.value!!,
+            birthday.value!!,
+            gender,
+            avatar!!,
+            address.value!!
         )
         callback.enqueue(object : Callback<String> {
             override fun onResponse(call: Call<String>, response: Response<String>) {
                 val result = response.body()
                 result?.let {
-                    _statusInsert.value = result == "insert_success"
+                    _statusEdit.value = result == "edit_success"
                 }
             }
 
             override fun onFailure(call: Call<String>, t: Throwable) {
                 Log.d("DEBUG", t.toString())
-                _statusInsert.value = false
+                _statusEdit.value = false
             }
         })
     }

@@ -11,10 +11,14 @@ import com.example.studentmanagement.model.Student
 import com.example.studentmanagement.network.ApiStatus
 import com.example.studentmanagement.network.BASE_URL
 
-@BindingAdapter("imageUri")
-fun setImageUri(view: ImageView, imageUri: Uri?) {
+@BindingAdapter(value = ["imageUri", "defaultUrl"], requireAll = false)
+fun setImageUri(view: ImageView, imageUri: Uri?, defaultImageUrl: String?) {
     if (imageUri == null) {
-        view.setImageResource(R.drawable.ic_baseline_person_24)
+        if (defaultImageUrl == null) {
+            view.setImageResource(R.drawable.ic_baseline_person_24)
+        } else {
+            bindImage(view, defaultImageUrl)
+        }
     } else {
         view.setImageURI(imageUri)
     }

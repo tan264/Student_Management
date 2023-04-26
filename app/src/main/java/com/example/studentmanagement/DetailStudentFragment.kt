@@ -38,4 +38,5 @@ class DetailStudentFragment : Fragment() {
         super.onDestroy()
         _binding = null
     }
+
 }

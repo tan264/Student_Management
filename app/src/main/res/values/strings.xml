@@ -15,6 +15,7 @@
     <string name="male">Male</string>
     <string name="female">Female</string>
     <string name="enter_nickname">Enter the child\'s nickname</string>
+    <string name="enter_address">Enter the address</string>
     <string name="confirm">Confirm</string>
     <string name="enter_enough_information">Enter enough information, please</string>
     <string name="insert_data_ok">Insert data is complete</string>
@@ -27,4 +28,6 @@
     <string name="class_name">Class: %1$s</string>
     <string name="gender">Gender: %1$s</string>
     <string name="address">Address: %1$s</string>
+    <string name="edit_student_fragment">Edit Student</string>
+    <string name="edit_data_ok">Edit data is complete</string>
 </resources>
