@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import com.example.studentmanagement.databinding.FragmentDetailStudentBinding
+import com.example.studentmanagement.model.Student
 import com.example.studentmanagement.viewmodel.DetailStudentViewModel
 
 class DetailStudentFragment : Fragment() {
@@ -17,21 +18,30 @@ class DetailStudentFragment : Fragment() {
 
     private val viewModel: DetailStudentViewModel by viewModels()
     private val args: DetailStudentFragmentArgs by navArgs()
+    lateinit var student: Student
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentDetailStudentBinding.inflate(inflater, container, false)
-        binding.viewmodel = viewModel
+        binding.apply {
+            viewmodel = viewModel
+            lifecycleOwner = viewLifecycleOwner
+        }
 
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        val student = args.student
-        viewModel.student = student!!
+        student = args.student!!
+        viewModel.myInit(student)
         super.onViewCreated(view, savedInstanceState)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        viewModel.getStudent(student.id)
     }
 
     override fun onDestroy() {

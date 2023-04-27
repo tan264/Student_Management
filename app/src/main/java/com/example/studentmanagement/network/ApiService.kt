@@ -65,8 +65,9 @@ interface ApiService {
     @GET("getListStudents.php")
     suspend fun getListStudents(): List<Student>
 
-    @GET("getStudent.php")
-    suspend fun getStudent(): Student
+    @FormUrlEncoded
+    @POST("getStudent.php")
+    suspend fun getStudent(@Field("id_student") idStudent: Int): Student
 
     @FormUrlEncoded
     @POST("deleteStudent.php")
