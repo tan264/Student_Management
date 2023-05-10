@@ -6,6 +6,8 @@ This is a simple Android application for managing student records, providing bas
 - ViewModel, DataBinding, LiveData, and other components to simplify MVVM architecture implementation.
 - Navigation component for navigating between fragments and using Safe Args to pass arguments.
 - Retrofit for simplifying communication with RESTful APIs.
+- Using the Moshi library to easily convert JSON to classes.
+- Using the Coil library to easily load images from the internet.
 - RecyclerView for displaying the list of students.
 
 ## Database
