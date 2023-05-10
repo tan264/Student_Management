@@ -1,4 +1,4 @@
-# Android Student Management System (Work In Progress ... )
+# Android Student Management System (Updating...)
 ## Introduction
 This is a simple Android application for managing student records, providing basic features such as adding, deleting, editing, and updating records through a RESTful API, implemented using the MVVM architecture.
 ## Screenshots
