@@ -62,6 +62,13 @@ interface ApiService {
         @Field("address") address: String
     ): Call<String>
 
+    @FormUrlEncoded
+    @POST("login.php")
+    fun login(
+        @Field("user") user: String,
+        @Field("password") password: String
+    ): Call<String>
+
     @GET("getListStudents.php")
     suspend fun getListStudents(): List<Student>
 

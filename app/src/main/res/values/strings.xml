@@ -30,4 +30,11 @@
     <string name="address">Address: %1$s</string>
     <string name="edit_student_fragment">Edit Student</string>
     <string name="edit_data_ok">Edit data is complete</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="login">Login</string>
+    <string name="user">User Name\n</string>
+    <string name="password">Password\n</string>
+    <string name="login_fail">Incorrect login information. Please try again.</string>
+    <string name="login_success">Login successful. Welcome back!</string>
 </resources>

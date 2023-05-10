@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.example.studentmanagement.viewmodel.LoginViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/login_background">
+
+        <TextView
+            android:id="@+id/label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="170dp"
+            android:text="@string/login"
+            android:textSize="36sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:inputType="text"
+            android:id="@+id/user"
+            android:layout_width="0dp"
+            android:layout_height="55dp"
+            android:layout_marginStart="@dimen/margin_between_elements"
+            android:layout_marginTop="50dp"
+            android:layout_marginEnd="@dimen/margin_between_elements"
+            android:drawableStart="@drawable/baseline_person_24"
+            android:drawablePadding="5dp"
+            android:hint="@string/user"
+            android:text="@={viewModel.user}"
+            android:textSize="@dimen/font_size"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/label" />
+
+        <EditText
+            android:inputType="textPassword"
+            android:id="@+id/password"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="@dimen/margin_between_elements"
+            android:drawableStart="@drawable/baseline_key_24"
+            android:drawablePadding="5dp"
+            android:hint="@string/password"
+            android:minWidth="200dp"
+            android:text="@={viewModel.password}"
+            android:textSize="@dimen/font_size"
+            app:layout_constraintEnd_toEndOf="@id/user"
+            app:layout_constraintStart_toStartOf="@id/user"
+            app:layout_constraintTop_toBottomOf="@id/user" />
+
+        <Button
+            android:id="@+id/button_login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:onClick="@{() -> viewModel.login()}"
+            android:text="@string/login"
+            android:textSize="@dimen/font_size"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/password" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
