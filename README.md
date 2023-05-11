@@ -15,6 +15,23 @@ This is a simple Android application for managing student records, providing bas
 
 ## APIs
 **Written in PHP**
+
+<details>
+<summary>dbConnect.php</summary>
+
+```php
+<?php
+    $hostname = "localhost";
+    $username = "root";
+    $password = "";
+    $databasename = "mamnonbanmai";
+
+    $connect = mysqli_connect($hostname, $username, $password, $databasename);
+    mysqli_query($connect, "SET NAMES 'utf8'");
+?>
+```
+</details>
+
 <details>
 <summary>login.php</summary>
 
