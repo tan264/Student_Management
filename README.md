@@ -1,6 +1,10 @@
 # Android Student Management System (Updating...)
 ## Introduction
 This is a simple Android application for managing student records, providing basic features such as adding, deleting, editing, and updating records through a RESTful API, implemented using the MVVM architecture.
+## How to Log In
+To log in to your account, please use the following credentials:
+- Username: admin
+- Password: Admin123<br/>
 ## Screenshots
 ## Built With
 - ViewModel, DataBinding, LiveData, and other components to simplify MVVM architecture implementation.
