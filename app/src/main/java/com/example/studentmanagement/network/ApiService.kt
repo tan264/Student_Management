@@ -18,7 +18,7 @@ import java.util.concurrent.TimeUnit
 
 enum class ApiStatus { LOADING, ERROR, DONE }
 
-const val BASE_URL = "http://doctor264.000webhostapp.com/mamnonbanmai/"
+const val BASE_URL = "http://doctor264.000webhostapp.com/mamnonbanmai/" //local: http://10.0.2.2/mamnonbanmai/
 private val moshi = Moshi.Builder()
     .add(KotlinJsonAdapterFactory())
     .build()
