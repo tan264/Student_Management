@@ -37,4 +37,5 @@
     <string name="password">Password\n</string>
     <string name="login_fail">Incorrect login information. Please try again.</string>
     <string name="login_success">Login successful. Welcome back!</string>
+    <string name="search">Search\n</string>
 </resources>

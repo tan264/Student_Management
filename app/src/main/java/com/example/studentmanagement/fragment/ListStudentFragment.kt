@@ -1,6 +1,8 @@
 package com.example.studentmanagement.fragment
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
 import android.view.*
 import android.widget.PopupMenu
@@ -54,6 +56,28 @@ class ListStudentFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val menuHost: MenuHost = requireActivity()
 
+        binding.search.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                viewModel.resetToOriginalList()
+            }
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+            }
+
+            override fun afterTextChanged(p0: Editable?) {
+                p0?.let {
+                    if (p0.isNotEmpty()) {
+                        val filterStudents = viewModel.listStudent.value?.filter { student: Student ->
+                            student.fullName.contains(it.toString(), true)
+                        }
+                        filterStudents?.let { viewModel.changeListStudents(it) }
+                    } else {
+                        viewModel.resetToOriginalList()
+                    }
+                }
+            }
+        })
+
         menuHost.addMenuProvider(object : MenuProvider {
             override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
                 menuInflater.inflate(R.menu.layout_menu, menu)
@@ -65,11 +89,13 @@ class ListStudentFragment : Fragment() {
                         findNavController().navigate(ListStudentFragmentDirections.actionListStudentFragmentToAddStudentFragment())
                         true
                     }
+
                     R.id.item_refresh -> {
                         viewModel.getListStudents()
                         Toast.makeText(requireContext(), "List updated", Toast.LENGTH_SHORT).show()
                         true
                     }
+
                     else -> false
                 }
             }
@@ -113,6 +139,7 @@ class ListStudentFragment : Fragment() {
                     )
                     true
                 }
+
                 else -> {
                     Toast.makeText(requireContext(), "nothing", Toast.LENGTH_SHORT).show()
                     false

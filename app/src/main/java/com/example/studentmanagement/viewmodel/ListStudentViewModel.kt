@@ -24,6 +24,8 @@ class ListStudentViewModel : ViewModel() {
     private val _listStudents = MutableLiveData<List<Student>>()
     val listStudent: LiveData<List<Student>> = _listStudents
 
+    private lateinit var originalList: List<Student>
+
     init {
         getListStudents()
     }
@@ -41,8 +43,7 @@ class ListStudentViewModel : ViewModel() {
                         if (it == "delete_success") {
                             _isDeleteSuccess.value = 1
                             _isDeleteSuccess.value = 0
-                        }
-                        else {
+                        } else {
                             _isDeleteSuccess.value = -1
                             _isDeleteSuccess.value = 0
                         }
@@ -65,7 +66,8 @@ class ListStudentViewModel : ViewModel() {
         _status.value = ApiStatus.LOADING
         viewModelScope.launch {
             try {
-                _listStudents.value = Api.retrofitService.getListStudents()
+                originalList = Api.retrofitService.getListStudents()
+                _listStudents.value = originalList
                 _status.value = ApiStatus.DONE
             } catch (e: Exception) {
                 _status.value = ApiStatus.ERROR
@@ -74,4 +76,13 @@ class ListStudentViewModel : ViewModel() {
             }
         }
     }
+
+    fun changeListStudents(students: List<Student>) {
+        _listStudents.value = students
+    }
+
+    fun resetToOriginalList() {
+        _listStudents.value = originalList
+    }
+
 }
