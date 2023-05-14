@@ -1,10 +1,11 @@
-package com.example.studentmanagement
+package com.example.studentmanagement.activity
 
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import com.example.studentmanagement.R
 import com.example.studentmanagement.databinding.ActivityLoginBinding
 import com.example.studentmanagement.viewmodel.LoginViewModel
 

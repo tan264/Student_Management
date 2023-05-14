@@ -1,4 +1,4 @@
-package com.example.studentmanagement
+package com.example.studentmanagement.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater

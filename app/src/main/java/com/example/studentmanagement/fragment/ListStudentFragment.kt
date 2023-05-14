@@ -1,4 +1,4 @@
-package com.example.studentmanagement
+package com.example.studentmanagement.fragment
 
 import android.os.Bundle
 import android.util.Log
@@ -13,6 +13,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.studentmanagement.R
 import com.example.studentmanagement.adapter.StudentAdapter
 import com.example.studentmanagement.databinding.FragmentListStudentBinding
 import com.example.studentmanagement.model.Student

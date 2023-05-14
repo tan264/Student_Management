@@ -1,25 +1,22 @@
-package com.example.studentmanagement
+package com.example.studentmanagement.fragment
 
-import android.app.DatePickerDialog
-import android.app.Dialog
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.DatePicker
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts.GetContent
-import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.example.studentmanagement.ContentUriRequestBody
+import com.example.studentmanagement.R
 import com.example.studentmanagement.databinding.FragmentAddStudentBinding
 import com.example.studentmanagement.viewmodel.AddStudentViewModel
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import java.io.FileNotFoundException
-import java.util.*
 
 class AddStudentFragment : Fragment() {
     private var _binding: FragmentAddStudentBinding? = null

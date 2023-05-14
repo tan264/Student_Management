@@ -1,4 +1,4 @@
-package com.example.studentmanagement
+package com.example.studentmanagement.fragment
 
 import android.net.Uri
 import android.os.Bundle
@@ -12,8 +12,9 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.example.studentmanagement.ContentUriRequestBody
+import com.example.studentmanagement.R
 import com.example.studentmanagement.databinding.FragmentEditStudentBinding
-import com.example.studentmanagement.model.Student
 import com.example.studentmanagement.viewmodel.EditStudentViewModel
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import java.io.FileNotFoundException
@@ -71,9 +72,11 @@ class EditStudentFragment : Fragment() {
                 if (status) {
                     Toast.makeText(context, getString(R.string.edit_data_ok), Toast.LENGTH_LONG)
                         .show()
-                    findNavController().navigate(EditStudentFragmentDirections.actionEditStudentFragmentToDetailStudentFragment(
-                        student
-                    ))
+                    findNavController().navigate(
+                        EditStudentFragmentDirections.actionEditStudentFragmentToDetailStudentFragment(
+                            student
+                        )
+                    )
                 } else {
                     Toast.makeText(context, getString(R.string.insert_data_fail), Toast.LENGTH_LONG)
                         .show()
@@ -82,7 +85,11 @@ class EditStudentFragment : Fragment() {
         }
 
         binding.buttonCancel.setOnClickListener {
-            findNavController().navigate(EditStudentFragmentDirections.actionEditStudentFragmentToDetailStudentFragment(student))
+            findNavController().navigate(
+                EditStudentFragmentDirections.actionEditStudentFragmentToDetailStudentFragment(
+                    student
+                )
+            )
         }
 
         binding.buttonConfirm.setOnClickListener {
