@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -27,7 +28,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
-            android:inputType="text"
+            android:autofillHints="username"
             android:id="@+id/user"
             android:layout_width="0dp"
             android:layout_height="55dp"
@@ -37,6 +38,7 @@
             android:drawableStart="@drawable/baseline_person_24"
             android:drawablePadding="5dp"
             android:hint="@string/user"
+            android:inputType="text"
             android:text="@={viewModel.user}"
             android:textSize="@dimen/font_size"
             app:layout_constraintEnd_toEndOf="parent"
@@ -44,7 +46,7 @@
             app:layout_constraintTop_toBottomOf="@id/label" />
 
         <EditText
-            android:inputType="textPassword"
+            android:autofillHints="password"
             android:id="@+id/password"
             android:layout_width="0dp"
             android:layout_height="50dp"
@@ -52,6 +54,7 @@
             android:drawableStart="@drawable/baseline_key_24"
             android:drawablePadding="5dp"
             android:hint="@string/password"
+            android:inputType="textPassword"
             android:minWidth="200dp"
             android:text="@={viewModel.password}"
             android:textSize="@dimen/font_size"
@@ -70,6 +73,18 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/password" />
+
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginEnd="@dimen/margin_between_elements"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="@id/button_login"
+            app:layout_constraintEnd_toStartOf="@id/button_login"
+            app:layout_constraintTop_toTopOf="@id/button_login"
+            app:status="@{viewModel.status}"
+            tools:visibility="visible" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

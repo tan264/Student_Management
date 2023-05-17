@@ -3,6 +3,7 @@ package com.example.studentmanagement.adapter
 import android.net.Uri
 import android.view.View
 import android.widget.ImageView
+import android.widget.ProgressBar
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
@@ -42,18 +43,20 @@ fun bindRecycleView(recyclerView: RecyclerView, data: List<Student>?) {
 
 
 @BindingAdapter("status")
-fun bindStatus(statusImageView: ImageView, status: ApiStatus) {
-    when (status) {
-        ApiStatus.LOADING -> {
-            statusImageView.visibility = View.VISIBLE
-            statusImageView.setImageResource(R.drawable.loading_animation)
-        }
-        ApiStatus.DONE -> {
-            statusImageView.visibility = View.GONE
-        }
-        ApiStatus.ERROR -> {
-            statusImageView.visibility = View.VISIBLE
-            statusImageView.setImageResource((R.drawable.ic_connection_error))
+fun bindStatus(progressBar: ProgressBar, status: ApiStatus?) {
+    status?.let {
+        when (status) {
+            ApiStatus.LOADING -> {
+                progressBar.visibility = View.VISIBLE
+            }
+
+            ApiStatus.DONE -> {
+                progressBar.visibility = View.GONE
+            }
+
+            ApiStatus.ERROR -> {
+                progressBar.visibility = View.VISIBLE
+            }
         }
     }
 }

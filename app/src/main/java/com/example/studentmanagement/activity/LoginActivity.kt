@@ -30,20 +30,19 @@ class LoginActivity : AppCompatActivity() {
             this.viewModel = this@LoginActivity.viewModel
         }
 
-        viewModel.status.observe(this) {
-            it?.let {
-                if (it) {
-                    Toast.makeText(this, getString(R.string.login_success), Toast.LENGTH_SHORT)
-                        .show()
-                    startActivity(Intent(this, MainActivity::class.java).apply {
-                        flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                    })
-                } else {
-                    Toast.makeText(this, getString(R.string.login_fail), Toast.LENGTH_SHORT)
-                        .show()
-                }
+        viewModel.result.observe(this) {
+            if (it == "login_success") {
+                Toast.makeText(this, getString(R.string.login_success), Toast.LENGTH_SHORT)
+                    .show()
+                startActivity(Intent(this, MainActivity::class.java).apply {
+                    flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                })
+            } else {
+                Toast.makeText(this, getString(R.string.login_fail), Toast.LENGTH_SHORT)
+                    .show()
             }
         }
+
     }
 
 }
