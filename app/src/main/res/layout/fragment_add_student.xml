@@ -23,6 +23,7 @@
 
             <TextView
                 android:id="@+id/title"
+                style="@style/TextAppearance.Material3.LabelLarge"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="100dp"
@@ -158,6 +159,7 @@
 
                 <Button
                     android:id="@+id/button_cancel"
+                    style="@style/Widget.Material3.Button"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1.5"
@@ -171,6 +173,7 @@
 
                 <Button
                     android:id="@+id/button_confirm"
+                    style="@style/Widget.Material3.Button"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1.5"

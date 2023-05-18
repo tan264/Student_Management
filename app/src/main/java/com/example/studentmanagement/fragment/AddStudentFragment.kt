@@ -85,7 +85,7 @@ class AddStudentFragment : Fragment() {
         }
 
         binding.buttonCancel.setOnClickListener {
-            findNavController().navigate(AddStudentFragmentDirections.actionAddStudentFragmentToListStudentFragment())
+            findNavController().navigateUp()
         }
 
         viewModel.statusInsert.observe(viewLifecycleOwner) { status ->

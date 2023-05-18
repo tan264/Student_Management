@@ -20,6 +20,7 @@ import com.example.studentmanagement.adapter.StudentAdapter
 import com.example.studentmanagement.databinding.FragmentListStudentBinding
 import com.example.studentmanagement.model.Student
 import com.example.studentmanagement.viewmodel.ListStudentViewModel
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 class ListStudentFragment : Fragment() {
 
@@ -67,9 +68,10 @@ class ListStudentFragment : Fragment() {
             override fun afterTextChanged(p0: Editable?) {
                 p0?.let {
                     if (p0.isNotEmpty()) {
-                        val filterStudents = viewModel.listStudent.value?.filter { student: Student ->
-                            student.fullName.contains(it.toString(), true)
-                        }
+                        val filterStudents =
+                            viewModel.listStudent.value?.filter { student: Student ->
+                                student.fullName.contains(it.toString(), true)
+                            }
                         filterStudents?.let { viewModel.changeListStudents(it) }
                     } else {
                         viewModel.resetToOriginalList()
@@ -127,7 +129,15 @@ class ListStudentFragment : Fragment() {
         popupMenu.setOnMenuItemClickListener {
             when (it.itemId) {
                 R.id.menu_delete -> {
-                    viewModel.deleteStudent(student.id)
+                    MaterialAlertDialogBuilder(requireContext()).setTitle(R.string.are_you_sure_to_delete_this_student)
+                        .setMessage(R.string.message_delete_student).setCancelable(false)
+                        .setNegativeButton(R.string.no) { dialog, _ ->
+                            dialog.dismiss()
+                        }
+                        .setPositiveButton(R.string.yes) { dialog, _ ->
+                            viewModel.deleteStudent(student.id)
+                            dialog.dismiss()
+                        }.show()
                     true
                 }
 
@@ -147,12 +157,6 @@ class ListStudentFragment : Fragment() {
             }
         }
         popupMenu.show()
-    }
-
-    override fun onResume() {
-        super.onResume()
-
-        viewModel.getListStudents()
     }
 
     override fun onDestroyView() {

@@ -21,10 +21,11 @@
 
             <TextView
                 android:id="@+id/title"
+                style="@style/TextAppearance.Material3.LabelLarge"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="100dp"
-                android:text="Edit Student"
+                android:text="@string/edit_student_fragment"
                 android:textSize="@dimen/font_size"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -38,9 +39,9 @@
                 android:importantForAccessibility="no"
                 android:scaleType="fitXY"
                 app:defaultUrl="@{viewModel.student.avatar}"
+                app:imageUri="@{viewModel.uri}"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@id/text_input_layout_name"
-                app:imageUri="@{viewModel.uri}" />
+                app:layout_constraintTop_toTopOf="@id/text_input_layout_name" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/text_input_layout_name"
@@ -177,6 +178,7 @@
 
                 <Button
                     android:id="@+id/button_cancel"
+                    style="@style/Widget.Material3.Button"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1.5"
@@ -190,6 +192,7 @@
 
                 <Button
                     android:id="@+id/button_confirm"
+                    style="@style/Widget.Material3.Button"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1.5"
