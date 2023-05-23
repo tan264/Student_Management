@@ -1,4 +1,4 @@
-package com.example.studentmanagement
+package com.example.studentmanagement.utils
 
 import android.content.ContentResolver
 import android.net.Uri

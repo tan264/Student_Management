@@ -12,7 +12,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import com.example.studentmanagement.ContentUriRequestBody
+import com.example.studentmanagement.utils.ContentUriRequestBody
 import com.example.studentmanagement.R
 import com.example.studentmanagement.databinding.FragmentEditStudentBinding
 import com.example.studentmanagement.viewmodel.EditStudentViewModel

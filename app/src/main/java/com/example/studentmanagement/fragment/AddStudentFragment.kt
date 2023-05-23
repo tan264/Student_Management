@@ -11,7 +11,7 @@ import androidx.activity.result.contract.ActivityResultContracts.GetContent
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import com.example.studentmanagement.ContentUriRequestBody
+import com.example.studentmanagement.utils.ContentUriRequestBody
 import com.example.studentmanagement.R
 import com.example.studentmanagement.databinding.FragmentAddStudentBinding
 import com.example.studentmanagement.viewmodel.AddStudentViewModel
